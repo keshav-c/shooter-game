@@ -1,2 +1,2 @@
 // import Phaser from 'phaser';
-import './styles/main.scss';
+import '../styles/main.scss';
