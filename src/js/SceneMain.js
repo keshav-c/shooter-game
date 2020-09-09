@@ -8,6 +8,9 @@ import sprEnemy2 from '../content/sprEnemy2.png';
 import sprLaserEnemy0 from '../content/sprLaserEnemy0.png';
 import sprLaserPlayer from '../content/sprLaserPlayer.png';
 import sprPlayer from '../content/sprPlayer.png';
+import sndExplode0 from '../content/sndExplode0.wav';
+import sndExplode1 from '../content/sndExplode1.wav';
+import sndLaser from '../content/sndLaser.wav';
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -56,6 +59,16 @@ class SceneMain extends Phaser.Scene {
         frameHeight: 16,
       },
     );
+
+    //  Load audio
+
+    this.load.audio('sndExplode0', sndExplode0);
+    this.load.audio('sndExplode1', sndExplode1);
+    this.load.audio('sndLaser', sndLaser);
+
+    // Create Animations
+
+    
   }
 
   create() {
