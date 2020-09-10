@@ -13,6 +13,8 @@ import sndExplode1 from '../content/sndExplode1.wav';
 import sndLaser from '../content/sndLaser.wav';
 import Player from './Player';
 import GunShip from './GunShip';
+import ChaserShip from './ChaserShip';
+import CarrierShip from './CarrierShip';
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -138,12 +140,32 @@ class SceneMain extends Phaser.Scene {
     this.time.addEvent({
       delay: 1000,
       callback() {
-        const enemy = new GunShip(
-          this,
-          Phaser.Math.Between(0, this.game.config.width),
-          0,
-        );
-        this.enemies.add(enemy);
+        let enemy;
+        if (Phaser.Math.Between(0, 10) >= 3) {
+          enemy = new GunShip(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0,
+          );
+        } else if (Phaser.Math.Between(0, 10) >= 5) {
+          if (this.getEnemiesByType('ChaserShip').length < 5) {
+            enemy = new ChaserShip(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0,
+            );
+          }
+        } else {
+          enemy = new CarrierShip(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0,
+          );
+        }
+        if (enemy !== null) {
+          enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
+          this.enemies.add(enemy);
+        }
       },
       callbackScope: this,
       loop: true,
@@ -163,6 +185,22 @@ class SceneMain extends Phaser.Scene {
     } else if (this.keyD.isDown) {
       this.player.moveRight();
     }
+
+    for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
+      const enemy = this.enemies.getChildren()[i];
+      enemy.update();
+    }
+  }
+
+  getEnemiesByType(type) {
+    const arr = [];
+    for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
+      const enemy = this.enemies.getChildren()[i];
+      if (enemy.getData('type') === type) {
+        arr.push(enemy);
+      }
+    }
+    return arr;
   }
 }
 
