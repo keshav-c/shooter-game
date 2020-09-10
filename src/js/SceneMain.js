@@ -12,6 +12,7 @@ import sndExplode0 from '../content/sndExplode0.wav';
 import sndExplode1 from '../content/sndExplode1.wav';
 import sndLaser from '../content/sndLaser.wav';
 import Player from './Player';
+import GunShip from './GunShip';
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -131,6 +132,22 @@ class SceneMain extends Phaser.Scene {
     this.enemies = this.add.group();
     this.enemyLasers = this.add.group();
     this.playerLasers = this.add.group();
+
+    // Event (timer) for spawning enemies
+
+    this.time.addEvent({
+      delay: 100,
+      callback() {
+        const enemy = new GunShip(
+          this,
+          Phaser.Math.Between(0, this.game.config.width),
+          0,
+        );
+        this.enemies.add(enemy);
+      },
+      callbackScope: this,
+      loop: true,
+    });
   }
 
   update() {
