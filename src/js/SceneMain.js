@@ -136,7 +136,7 @@ class SceneMain extends Phaser.Scene {
     // Event (timer) for spawning enemies
 
     this.time.addEvent({
-      delay: 100,
+      delay: 1000,
       callback() {
         const enemy = new GunShip(
           this,
