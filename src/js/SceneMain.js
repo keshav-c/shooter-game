@@ -11,6 +11,7 @@ import sprPlayer from '../content/sprPlayer.png';
 import sndExplode0 from '../content/sndExplode0.wav';
 import sndExplode1 from '../content/sndExplode1.wav';
 import sndLaser from '../content/sndLaser.wav';
+import Player from './Player';
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -107,6 +108,39 @@ class SceneMain extends Phaser.Scene {
       ],
       laser: this.sound.add('sndLaser'),
     };
+
+    // Initialize keys
+
+    this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+    this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+    this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+    this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
+    // Add the player
+
+    this.player = new Player(
+      this,
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.5,
+      'sprPlayer',
+    );
+  }
+
+  update() {
+    this.player.update();
+
+    if (this.keyW.isDown) {
+      this.player.moveUp();
+    } else if (this.keyS.isDown) {
+      this.player.moveDown();
+    }
+    if (this.keyA.isDown) {
+      this.player.moveLeft();
+    } else if (this.keyD.isDown) {
+      this.player.moveRight();
+    }
+
   }
 }
 

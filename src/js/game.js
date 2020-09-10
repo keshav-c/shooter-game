@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import '../styles/main.scss';
+// Import entities here somewhere
 import SceneMainMenu from './SceneMainMenu';
 import SceneMain from './SceneMain';
 import SceneGameOver from './SceneGameOver';
