@@ -65,14 +65,48 @@ class SceneMain extends Phaser.Scene {
     this.load.audio('sndExplode0', sndExplode0);
     this.load.audio('sndExplode1', sndExplode1);
     this.load.audio('sndLaser', sndLaser);
-
-    // Create Animations
-
-    
   }
 
   create() {
-    // Todo
+    // Create animations
+
+    this.anims.create({
+      key: 'sprEnemy0',
+      frames: this.anims.generateFrameNumbers('sprEnemy0'),
+      frameRate: 20,
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: 'sprEnemy2',
+      frames: this.anims.generateFrameNumbers('sprEnemy2'),
+      frameRate: 20,
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: 'sprExplosion',
+      frames: this.anims.generateFrameNumbers('sprExplosion'),
+      frameRate: 20,
+      repeat: 0,
+    });
+
+    this.anims.create({
+      key: 'sprPlayer',
+      frames: this.anims.generateFrameNumbers('sprPlayer'),
+      frameRate: 20,
+      repeat: -1,
+    });
+
+    // Add sounds to a accessible variable
+
+    this.sfx = {
+      explosions: [
+        this.sound.add('sndExplode0'),
+        this.sound.add('sndExplode1'),
+      ],
+      laser: this.sound.add('sndLaser'),
+    };
   }
 }
 
