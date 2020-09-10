@@ -109,14 +109,6 @@ class SceneMain extends Phaser.Scene {
       laser: this.sound.add('sndLaser'),
     };
 
-    // Initialize keys
-
-    this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-    this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-    this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-    this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-
     // Add the player
 
     this.player = new Player(
@@ -125,6 +117,20 @@ class SceneMain extends Phaser.Scene {
       this.game.config.height * 0.5,
       'sprPlayer',
     );
+
+    // Initialize keys
+
+    this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+    this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+    this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+    this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
+    // Groups for enemies, their projectiles and the players projectiles
+
+    this.enemies = this.add.group();
+    this.enemyLasers = this.add.group();
+    this.playerLasers = this.add.group();
   }
 
   update() {
@@ -140,7 +146,6 @@ class SceneMain extends Phaser.Scene {
     } else if (this.keyD.isDown) {
       this.player.moveRight();
     }
-
   }
 }
 
