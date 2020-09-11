@@ -77,6 +77,20 @@ class SceneMainMenu extends Phaser.Scene {
       },
       this,
     );
+
+    this.title = this.add.text(
+      this.game.config.width * 0.5,
+      128,
+      'SPACE SHOOTER',
+      {
+        fontFamily: 'monospace',
+        fontSize: 48,
+        fonstStyle: 'bold',
+        color: '#ffff',
+        align: 'center',
+      },
+    );
+    this.title.setOrigin(0.5);
   }
 }
 
