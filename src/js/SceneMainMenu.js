@@ -36,6 +36,47 @@ class SceneMainMenu extends Phaser.Scene {
       btnOver: this.sound.add('sndBtnOver'),
       btnDown: this.sound.add('sndBtnDown'),
     };
+
+    this.btnPlay = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.5,
+      'sprBtnPlay',
+    );
+    this.btnPlay.setInteractive();
+    this.btnPlay.on(
+      'pointerover',
+      // eslint-disable-next-line func-names
+      function () {
+        this.btnPlay.setTexture('sprBtnPlayHover');
+        this.sfx.btnOver.play();
+      },
+      this,
+    );
+    this.btnPlay.on(
+      'pointerout',
+      // eslint-disable-next-line func-names
+      function () {
+        this.setTexture('sprBtnPlay');
+      },
+    );
+    this.btnPlay.on(
+      'pointerdown',
+      // eslint-disable-next-line func-names
+      function () {
+        this.btnPlay.setTexture('sprBtnPlayDown');
+        this.sfx.btnDown.play();
+      },
+      this,
+    );
+    this.btnPlay.on(
+      'pointerup',
+      // eslint-disable-next-line func-names
+      function () {
+        this.btnPlay.setTexture('sprBtnPlay');
+        this.scene.start('SceneMain');
+      },
+      this,
+    );
   }
 }
 
