@@ -7,6 +7,7 @@ import sprBtnRestartHover from '../content/sprBtnRestartHover.png';
 import sprBtnRestartDown from '../content/sprBtnRestartDown.png';
 import sndBtnOver from '../content/sndBtnOver.wav';
 import sndBtnDown from '../content/sndBtnDown.wav';
+import ScrollingBackground from './ScrollingBackground';
 
 class SceneMainMenu extends Phaser.Scene {
   constructor() {
@@ -36,6 +37,8 @@ class SceneMainMenu extends Phaser.Scene {
       btnOver: this.sound.add('sndBtnOver'),
       btnDown: this.sound.add('sndBtnDown'),
     };
+
+    // Play button
 
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
@@ -78,6 +81,8 @@ class SceneMainMenu extends Phaser.Scene {
       this,
     );
 
+    // Game title
+
     this.title = this.add.text(
       this.game.config.width * 0.5,
       128,
@@ -91,6 +96,22 @@ class SceneMainMenu extends Phaser.Scene {
       },
     );
     this.title.setOrigin(0.5);
+
+    // Backgrounds for the main menu
+
+    this.backgrounds = [];
+    for (let i = 0; i < 5; i += 1) {
+      const keys = ['sprBg0', 'sprBg1'];
+      const key = keys[Phaser.Math.Between(0, keys.length - 1)];
+      const bg = new ScrollingBackground(this, key, i * 10);
+      this.backgrounds.push(bg);
+    }
+  }
+
+  update() {
+    for (let i = 0; i < this.backgrounds.length; i += 1) {
+      this.backgrounds[i].update();
+    }
   }
 }
 
