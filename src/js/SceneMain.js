@@ -1,6 +1,4 @@
 import Phaser from 'phaser';
-import sprBg0 from '../content/sprBg0.png';
-import sprBg1 from '../content/sprBg1.png';
 import sprExplosion from '../content/sprExplosion.png';
 import sprEnemy0 from '../content/sprEnemy0.png';
 import sprEnemy1 from '../content/sprEnemy1.png';
@@ -27,8 +25,6 @@ class SceneMain extends Phaser.Scene {
   preload() {
     // Load Sprites
 
-    this.load.image('sprBg0', sprBg0);
-    this.load.image('sprBg1', sprBg1);
     this.load.spritesheet(
       'sprExplosion',
       sprExplosion,
