@@ -15,6 +15,7 @@ import Player from './Player';
 import GunShip from './GunShip';
 import ChaserShip from './ChaserShip';
 import CarrierShip from './CarrierShip';
+import ScrollingBackground from './ScrollingBackground';
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -111,6 +112,14 @@ class SceneMain extends Phaser.Scene {
       ],
       laser: this.sound.add('sndLaser'),
     };
+
+    // Add scrolling background to the scene
+
+    this.backgrounds = [];
+    for (let i = 0; i < 5; i += 1) {
+      const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
+      this.backgrounds.push(bg);
+    }
 
     // Add the player
 
@@ -273,7 +282,7 @@ class SceneMain extends Phaser.Scene {
 
     // Update and frustum cull player lasers
 
-    for (let i = 0; i < this.playerLasers.getChildren().length; i+= 1) {
+    for (let i = 0; i < this.playerLasers.getChildren().length; i += 1) {
       const laser = this.playerLasers.getChildren()[i];
       laser.update();
       if (laser.x < -laser.displayWidth
@@ -284,6 +293,12 @@ class SceneMain extends Phaser.Scene {
           laser.destroy();
         }
       }
+    }
+
+    // update background layers
+
+    for (let i = 0; i < this.backgrounds.length; i += 1) {
+      this.backgrounds[i].update();
     }
   }
 
