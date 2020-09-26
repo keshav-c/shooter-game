@@ -176,6 +176,14 @@ class SceneMain extends Phaser.Scene {
       loop: true,
     });
 
+    // Setup scores
+
+    this.score = 0;
+    const scoreText = this.add.text(16, 16, 'Score: 0', {
+      fontSize: '32px',
+      fill: '#fff',
+    });
+
     // Add collision between player lasers and enemies
 
     this.physics.add.collider(
@@ -188,6 +196,8 @@ class SceneMain extends Phaser.Scene {
           }
           enemy.explode(true);
           playerLaser.destroy();
+          this.score += 1;
+          scoreText.setText(`Score: ${this.score}`);
         }
       },
     );
