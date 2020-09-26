@@ -8,6 +8,10 @@ class SceneGameOver extends Phaser.Scene {
     });
   }
 
+  init(data) {
+    this.score = data.score;
+  }
+
   create() {
     // Game Over title
 
@@ -24,6 +28,22 @@ class SceneGameOver extends Phaser.Scene {
       },
     );
     this.title.setOrigin(0.5);
+
+    // Final score
+
+    this.finalScore = this.add.text(
+      this.game.config.width * 0.5,
+      228,
+      `You Killed ${this.score}!`,
+      {
+        fontFamily: 'monospace',
+        fontSize: 32,
+        fonstStyle: 'bold',
+        color: '#f53',
+        align: 'center',
+      },
+    );
+    this.finalScore.setOrigin(0.5);
 
     // Restart button
 
