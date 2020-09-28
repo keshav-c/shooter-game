@@ -1,13 +1,13 @@
 import Phaser from 'phaser';
 import '../styles/main.scss';
-// Import entities here somewhere
 import SceneMainMenu from './SceneMainMenu';
 import SceneMain from './SceneMain';
 import SceneGameOver from './SceneGameOver';
+import SceneNameSelect from './SceneNameSelect';
 
 const config = {
   type: Phaser.WEBGL,
-  width: 480,
+  width: 550,
   height: 640,
   backgroundColor: 'black',
   physics: {
@@ -18,6 +18,7 @@ const config = {
   },
   scene: [
     SceneMainMenu,
+    SceneNameSelect,
     SceneMain,
     SceneGameOver,
   ],

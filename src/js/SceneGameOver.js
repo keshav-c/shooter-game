@@ -9,6 +9,7 @@ class SceneGameOver extends Phaser.Scene {
   }
 
   init(data) {
+    this.name = data.name;
     this.score = data.score;
   }
 
@@ -34,7 +35,7 @@ class SceneGameOver extends Phaser.Scene {
     this.finalScore = this.add.text(
       this.game.config.width * 0.5,
       228,
-      `You Killed ${this.score}!`,
+      `${this.name} Scored ${this.score} kills!`,
       {
         fontFamily: 'monospace',
         fontSize: 32,
@@ -92,6 +93,10 @@ class SceneGameOver extends Phaser.Scene {
       },
       this,
     );
+
+    // Leaderboard
+
+    
 
     // Background layers
 

@@ -36,6 +36,10 @@ module.exports = {
         test: /\.wav$/i,
         use: "file-loader"
       },
+      {
+        test: /\.xml$/i,
+        use: "raw-loader"
+      },
     ]
   },
   plugins: [

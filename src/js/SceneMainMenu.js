@@ -83,7 +83,8 @@ class SceneMainMenu extends Phaser.Scene {
       // eslint-disable-next-line func-names
       function () {
         this.btnPlay.setTexture('sprBtnPlay');
-        this.scene.start('SceneMain');
+        // this.scene.start('SceneMain');
+        this.scene.start('SceneNameSelect');
       },
       this,
     );

@@ -22,6 +22,10 @@ class SceneMain extends Phaser.Scene {
     });
   }
 
+  init(data) {
+    this.name = data.name;
+  }
+
   preload() {
     // Load Sprites
 
