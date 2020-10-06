@@ -19,7 +19,7 @@ class SceneGameOver extends Phaser.Scene {
 
     this.title = this.add.text(
       this.game.config.width * 0.5,
-      128,
+      100,
       'GAME OVER',
       {
         fontFamily: 'monospace',
@@ -31,22 +31,6 @@ class SceneGameOver extends Phaser.Scene {
     );
     this.title.setOrigin(0.5);
 
-    // Final score
-
-    this.finalScore = this.add.text(
-      this.game.config.width * 0.5,
-      228,
-      `${this.name} Scored ${this.score} kills!`,
-      {
-        fontFamily: 'monospace',
-        fontSize: 32,
-        fonstStyle: 'bold',
-        color: '#f53',
-        align: 'center',
-      },
-    );
-    this.finalScore.setOrigin(0.5);
-
     // Restart button
 
     this.sfx = {
@@ -56,7 +40,7 @@ class SceneGameOver extends Phaser.Scene {
 
     this.btnRestart = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
+      this.game.config.height - 128,
       'sprBtnRestart',
     );
     this.btnRestart.setInteractive();
@@ -98,14 +82,54 @@ class SceneGameOver extends Phaser.Scene {
     // Leaderboard
 
     // eslint-disable-next-line no-unused-vars
-    const leaderboardPromis = new Promise((resolve, reject) => {
+    const leaderboardPromise = new Promise((resolve, reject) => {
       postScore(this.name, this.score, resolve, reject);
     })
-      .then((leaderboard) => {
-        console.log(leaderboard);
+      .then(({ rank, top }) => {
+        this.add.text(
+          this.game.config.width * 0.5,
+          200,
+          'Rank  Name  Score',
+          {
+            fontFamily: 'monospace',
+            fontSize: 16,
+            fonstStyle: 'bold',
+            color: '#ffff',
+            align: 'center',
+          },
+        ).setOrigin(0.5);
+        for (let i = 0; i < top.length; i += 1) {
+          const pos = String(`${top[i].rank}      `).slice(0, 6);
+          const name = String(`${top[i].user}      `).slice(0, 6);
+          const score = String(`     ${top[i].score}`).slice(-5);
+          const clr = i + 1 === rank || i === 5 ? '#f00' : '#0ff';
+          this.add.text(
+            this.game.config.width * 0.5,
+            200 + 40 * (i + 1),
+            `${pos}${name}${score}`,
+            {
+              fontFamily: 'monospace',
+              fontSize: 16,
+              fonstStyle: 'bold',
+              color: clr,
+              align: 'center',
+            },
+          ).setOrigin(0.5);
+        }
       })
       .catch((reason) => {
-        console.log(reason);
+        this.add.text(
+          this.game.config.width * 0.5,
+          228,
+          String(reason),
+          {
+            fontFamily: 'monospace',
+            fontSize: 16,
+            fonstStyle: 'bold',
+            color: '#ffff',
+            align: 'center',
+          },
+        ).setOrigin(0.5);
       });
 
     // Background layers
