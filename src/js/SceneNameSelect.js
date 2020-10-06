@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Phaser from 'phaser';
 import block from '../content/block.png';
 import rub from '../content/rub.png';
