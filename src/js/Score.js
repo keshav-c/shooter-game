@@ -38,8 +38,7 @@ const postScore = async (name, score, resolve, reject) => {
         gameScore.rank = rank;
         top.push(gameScore);
       }
-      const leaderboard = { rank, top };
-      resolve(leaderboard);
+      resolve(top);
       return;
     }
   } catch (error) {

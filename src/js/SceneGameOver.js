@@ -85,7 +85,7 @@ class SceneGameOver extends Phaser.Scene {
     const leaderboardPromise = new Promise((resolve, reject) => {
       postScore(this.name, this.score, resolve, reject);
     })
-      .then(({ rank, top }) => {
+      .then((top) => {
         this.add.text(
           this.game.config.width * 0.5,
           200,
@@ -102,7 +102,6 @@ class SceneGameOver extends Phaser.Scene {
           const pos = String(`${top[i].rank}      `).slice(0, 6);
           const name = String(`${top[i].user}      `).slice(0, 6);
           const score = String(`     ${top[i].score}`).slice(-5);
-          const clr = i + 1 === rank || i === 5 ? '#f00' : '#0ff';
           this.add.text(
             this.game.config.width * 0.5,
             200 + 40 * (i + 1),
@@ -111,7 +110,7 @@ class SceneGameOver extends Phaser.Scene {
               fontFamily: 'monospace',
               fontSize: 16,
               fonstStyle: 'bold',
-              color: clr,
+              color: '#0ff',
               align: 'center',
             },
           ).setOrigin(0.5);

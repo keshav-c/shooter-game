@@ -33,8 +33,8 @@ class SceneMain extends Phaser.Scene {
       'sprExplosion',
       sprExplosion,
       {
-        frameWidth: 32,
-        frameHeight: 32,
+        frameWidth: 16,
+        frameHeight: 16,
       },
     );
     this.load.spritesheet(
