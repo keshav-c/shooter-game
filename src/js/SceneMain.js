@@ -99,7 +99,7 @@ class SceneMain extends Phaser.Scene {
     this.anims.create({
       key: 'sprEnemy2',
       frames: this.anims.generateFrameNumbers('sprEnemy2'),
-      frameRate: 20,
+      frameRate: 5,
       repeat: -1,
     });
 
