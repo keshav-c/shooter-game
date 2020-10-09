@@ -29,7 +29,7 @@ const postScore = async (name, score, resolve, reject) => {
       });
       const rank = sortedScores.findIndex(
         (position) => position.user === name && position.score === score,
-      );
+      ) + 1;
       const top = sortedScores.slice(0, 5);
       top.forEach((game, index) => {
         game.rank = index + 1;
