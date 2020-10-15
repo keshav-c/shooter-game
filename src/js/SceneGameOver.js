@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import ScrollingBackground from './ScrollingBackground';
-import postScore from './Score';
+import getLeaderBoard from './score/getLeaderBoard';
 
 class SceneGameOver extends Phaser.Scene {
   constructor() {
@@ -83,7 +83,7 @@ class SceneGameOver extends Phaser.Scene {
 
     // eslint-disable-next-line no-unused-vars
     const leaderboardPromise = new Promise((resolve, reject) => {
-      postScore(this.name, this.score, resolve, reject);
+      getLeaderBoard(this.name, this.score, resolve, reject);
     })
       .then((top) => {
         this.add.text(

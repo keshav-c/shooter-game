@@ -3,7 +3,7 @@
   "description": "A space shooter game in Phaser 3",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --verbose",
     "lint": "eslint . && stylelint '**/*.{css,scss}'",
     "start": "webpack-dev-server --config webpack/base.js --open",
     "build": "webpack --config webpack/prod.js "
@@ -30,6 +30,7 @@
     "eslint-plugin-import": "^2.20.2",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^26.5.2",
     "raw-loader": "^3.1.0",
     "sass": "^1.26.10",
     "sass-loader": "^10.0.2",
