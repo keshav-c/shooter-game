@@ -15,7 +15,7 @@ class SceneNameSelect extends Phaser.Scene {
     this.load.image('block', block);
     this.load.image('rub', rub);
     this.load.image('end', end);
-    this.load.bitmapFont('arcade', 'http://labs.phaser.io/assets/fonts/bitmap/arcade.png', 'http://labs.phaser.io/assets/fonts/bitmap/arcade.xml');
+    this.load.bitmapFont('arcade', 'https://labs.phaser.io/assets/fonts/bitmap/arcade.png', 'https://labs.phaser.io/assets/fonts/bitmap/arcade.xml');
   }
 
   create() {
