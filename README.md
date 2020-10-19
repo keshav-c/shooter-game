@@ -6,7 +6,6 @@
 
 > A shmup game coded in JavaScript using Phaser 3. 
 
-![screenshot](screenshot link)
 <p>
   <img src="./src/docs/images/intro_scene.png">
 </p>
