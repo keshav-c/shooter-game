@@ -80,7 +80,7 @@ All of the sprites, backgrounds, buttons and the sounds can be found on [OpenGam
 
 ## Live Demo
 
-[Live Demo Link](demo link)
+[Hosted by Netlify](https://shooty-villain.netlify.app/)
 
 ## Code Review
 
