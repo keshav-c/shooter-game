@@ -39,7 +39,7 @@ You steel yourself and resolve to kill as many of the evil enemy forces, before 
 
 ### Instructions
 
-- Move using `WSAD`.
+- Move using `WSAD` (or the arrow keys).
 - `Spacebar` to shoot.
 - Kill as many as you can.
 - Don't die.

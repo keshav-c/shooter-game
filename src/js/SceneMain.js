@@ -147,9 +147,13 @@ class SceneMain extends Phaser.Scene {
     // Initialize keys
 
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+    this.keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+    this.keyDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+    this.keyLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
     this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    this.keyRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     // Groups for enemies, their projectiles and the players projectiles
@@ -253,14 +257,14 @@ class SceneMain extends Phaser.Scene {
     if (!this.player.getData('isDead')) {
       this.player.update();
 
-      if (this.keyW.isDown) {
+      if (this.keyW.isDown || this.keyUp.isDown) {
         this.player.moveUp();
-      } else if (this.keyS.isDown) {
+      } else if (this.keyS.isDown || this.keyDown.isDown) {
         this.player.moveDown();
       }
-      if (this.keyA.isDown) {
+      if (this.keyA.isDown || this.keyLeft.isDown) {
         this.player.moveLeft();
-      } else if (this.keyD.isDown) {
+      } else if (this.keyD.isDown || this.keyRight.isDown) {
         this.player.moveRight();
       }
 
