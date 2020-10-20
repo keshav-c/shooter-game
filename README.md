@@ -19,9 +19,13 @@
   <img src="./src/docs/images/end_scene.png">
 </p>
 
-## About the Project
+## Game Design Document
 
 The main objective of this project is to build a shooter game. The instructions to code this game can be found in this [tutorial](https://learn.yorkcs.com/category/tutorials/gamedev/phaser-3/build-a-space-shooter-with-phaser-3/). I ported the code to ES6, made changes in gameplay, created new assets and hooked it up to an external scoring API using promises and async functions.
+
+The game is of an infinite shooter type, in which the enemies keep pouring from the top of the screen. Some of these enemies shoot projectiles at the player, in a straight line, which can kill them on contact. The player character has to dodge the enemies as collision will also result in player death. Further still, some enemies will chase the player around the map, trying to collide with them.
+
+Score is determined by the number of enemies the player kills before dying. All scores are stored in an external leaderboard, which can be accessed by the provided API. These scores are retrieved using the same API, and are then sorted to show a leaderboard of top 5 scores, as well the relative ranking of the player's current attempt.
 
 ## Game Intro
 
