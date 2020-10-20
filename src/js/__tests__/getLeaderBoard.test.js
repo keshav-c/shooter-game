@@ -1,5 +1,5 @@
 import getLeaderBoard from '../getLeaderBoard';
-import fakeLeaderBoard from '../score/__mocks__/testDataSorted';
+import fakeLeaderBoard from '../score/__mocks__/testDataSortedAndRanked';
 
 jest.mock('../score/getScores');
 jest.mock('../score/postScore');
